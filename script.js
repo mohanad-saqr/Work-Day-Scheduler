@@ -1,10 +1,10 @@
 $(function() {
-  // Display the current date in the header
+
   $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
 
-  // Generate time blocks for each work hour (9AM to 5PM)
+
   for (let hour = 9; hour <= 17; hour++) {
-    let displayHour = hour > 12 ? hour - 12 : hour; // Convert to 12-hour format
+    let displayHour = hour > 12 ? hour - 12 : hour; 
     let amPm = hour >= 12 ? 'PM' : 'AM';
     let timeBlock = $('<div>')
       .addClass('row time-block')
@@ -20,16 +20,16 @@ $(function() {
       .attr('aria-label', 'save')
       .html('<i class="fas fa-save" aria-hidden="true"></i>');
 
-    // Append the columns to the time block
+
     timeBlock.append(hourCol, textArea, saveBtn);
 
-    // Append the time block to the container
+
     $('.container-fluid').append(timeBlock);
   }
 
-  // Function to update the time block classes according to the current time
+
   function updateTimeBlocks() {
-    var currentHour = dayjs().hour(); // Get current hour in 24-hour format
+    var currentHour = dayjs().hour(); 
 
     $(".time-block").each(function() {
       var blockHour = parseInt($(this).attr("id").replace("hour-", ""));
@@ -43,12 +43,12 @@ $(function() {
     });
   }
 
-  // Call the function to set the initial class states
+
   updateTimeBlocks();
-  // Optionally, set an interval to update classes dynamically if the app is kept open
+
   setInterval(updateTimeBlocks, 60000);
 
-  // Load saved data from localStorage
+
   $(".time-block").each(function() {
     var id = $(this).attr("id");
     if (localStorage.getItem(id)) {
@@ -56,7 +56,6 @@ $(function() {
     }
   });
 
-  // Save button listener
   $(".saveBtn").click(function() {
     var parentId = $(this).closest('.time-block').attr("id");
     var userText = $(this).siblings(".description").val();
