@@ -57,3 +57,30 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+/* This CSS will ensure only the .hour and .saveBtn background colors change */
+.past .hour,
+.past .saveBtn {
+  background-color: #d3d3d3;
+}
+
+.present .hour,
+.present .saveBtn {
+  background-color: #ff6961;
+}
+
+.future .hour,
+.future .saveBtn {
+  background-color: #77dd77;
+}
+
+/* This CSS ensures that the text color for the textarea does not change */
+textarea {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  /* This will keep the text color black */
+  border-left: 1px solid black;
+  padding: 10px;
+}
